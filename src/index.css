@@ -1,0 +1,176 @@
+@import 'tailwindcss' layer(utilities);
+@import 'tailwindcss/utilities' layer(utilities);
+
+@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
+
+@tailwind utilities;
+
+
+@layer base {
+  * {
+    border-color: #e5e7eb;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #0a0a0a;
+    color: #f8fafc;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  }
+}
+
+@layer components {
+  .glass-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  .glass-nav {
+    background-color: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .btn-primary {
+    background: linear-gradient(to right, #0ea5e9, #0284c7);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.2);
+    transform: scale(1.05);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    border: 2px solid rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgba(56, 189, 248, 0.1);
+    border-color: #38bdf8;
+  }
+  
+  .card-modern {
+    background: linear-gradient(145deg, #111111 0%, #1a1a1a 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .card-modern:hover {
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4);
+    transform: translateY(-0.5rem);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(to right, #38bdf8, #7dd3fc, #0ea5e9);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  .section-padding {
+    padding: 5rem 1.5rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding: 5rem 2rem;
+    }
+  }
+  
+  .container-custom {
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Particules d'arrière-plan */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.6;
+  animation: float 8s ease-in-out infinite;
+}
+
+.p1 {
+  width: 4px;
+  height: 4px;
+  background: #38bdf8;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.p2 {
+  width: 6px;
+  height: 6px;
+  background: #8b5cf6;
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.p3 {
+  width: 3px;
+  height: 3px;
+  background: #06b6d4;
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+.p4 {
+  width: 5px;
+  height: 5px;
+  background: #a855f7;
+  top: 40%;
+  right: 30%;
+  animation-delay: 6s;
+}
