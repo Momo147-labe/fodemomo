@@ -27,7 +27,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen bg-hero-gradient overflow-hidden">
+    <section id="home" className="relative min-h-screen mt-2 bg-hero-gradient overflow-hidden">
       {/* Particules animées */}
       <div className="particle p1"></div>
       <div className="particle p2"></div>

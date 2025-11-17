@@ -14,25 +14,18 @@ const data = {
   ],
   formation:[
      {
-      date:"Session 2024",
-      titre:"Diplôme de Bachelier de Seconde Degré BAC",
-      organisateur:"La guinée",
-      description:"ok c'est bien",
+      date:"Session 2024 / Établi le 23/07/2024 / Fait à Conakry, le 25/07/2024",
+      titre:"Diplôme de Bachelier du second Degré",
+      organisateur:"MINISTERE DE L'ENSEIGNEMENT PRÉ-UNIVERSITAIRE ET DE L'ALPHABETISATION / Direction Générale des Examens et Contrôle Scolaire",
+      description:"Obtenu dans le profil SCIENCES MATHÉMATIQUES avec la mention ASSEZ BIEN.",
       certificat:"/certificat/bacdevant.jpg"
      },
       {
-      date:"Session 2024",
-      titre:"Diplôme de Bachelier de Seconde Degré BAC",
-      organisateur:"La guinée",
-      description:"ok c'est bien",
+      date:"S'est déroulée du 16 au 17 mai 2025",
+      titre:"Certificat de formation",
+      organisateur:"Université de Labé (mentionnée sur le certificat) et CJP (Club des Jeunes Informaticiens)",
+      description:"Formation intitulée : Comment protéger son Réseaux LAN avec un pare-feu",
       certificat:"/certificat/cjp1.jpg"
-     },
-      {
-      date:"Session 2024",
-      titre:"Diplôme de Bachelier de Seconde Degré BAC",
-      organisateur:"La guinée",
-      description:"ok c'est bien",
-      certificat:"/sqlite.jpg"
      },
    ],
   info: {
