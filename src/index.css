@@ -6,6 +6,24 @@
 
 @tailwind utilities;
 
+@media print {
+  /* Masque les boutons d'action (nous utilisons la classe 'print-hidden' ici) */
+  .print-hidden {
+    display: none !important;
+  }
+  
+  /* Supprime l'arrière-plan et les ombres */
+  body {
+    background-color: white !important;
+  }
+
+  /* Optimise le conteneur du CV pour l'impression */
+  .max-w-4xl {
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+}
 
 @layer base {
   * {

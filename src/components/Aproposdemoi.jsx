@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import data from '../data/data'
 
+
 const Aproposdemoi = () => {
   const getProgressPercentage = (niveau) => {
     const niveauMap = {
@@ -117,9 +118,7 @@ const Aproposdemoi = () => {
             <div className="space-y-6">
               <h3 className="text-3xl font-bold text-white">Mon Histoire</h3>
               <p className="text-gray-300 leading-relaxed text-lg">
-                Développeur Full-Stack passionné avec une expertise dans la création d'applications web modernes et responsives. 
-                Mon parcours professionnel est guidé par l'amour de la technologie et un désir constant d'apprendre et d'implémenter 
-                des solutions innovantes.
+                {data.info.description}
               </p>
               <p className="text-gray-300 leading-relaxed">
                 Je me spécialise dans l'écosystème JavaScript, en construisant des expériences utilisateur fluides et en m'efforçant 

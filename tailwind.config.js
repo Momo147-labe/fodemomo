@@ -80,5 +80,11 @@ export default {
       },
     },
   },
+  corePlugins: {
+    // Force Tailwind à utiliser le format RGB pour les couleurs au lieu de HSL/OKLCH,
+    // ce qui est lisible par html2canvas.
+    preflight: true, // Gardez ceci
+    container: false, // Exemple, si vous ne l'utilisez pas
+  },
   plugins: [],
 }
