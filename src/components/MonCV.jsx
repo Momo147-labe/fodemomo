@@ -1,63 +1,87 @@
 import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import data from '../data/data';
 
 // --- Composants Réutilisables ---
 
 // Composant pour un élément de contact
 const ContactItem = ({ icon, text }) => (
-  <div className="flex items-center mb-2">
-    <span className="mr-3 text-lg text-blue-600">{icon}</span>
-    <p className="text-sm text-gray-700">{text}</p>
-  </div>
+  <motion.div 
+    className="flex items-center mb-3 p-2 rounded-lg hover:bg-white/5 transition-all duration-300"
+    whileHover={{ x: 5 }}
+  >
+    <span className="mr-3 text-lg text-primary-400">{icon}</span>
+    <p className="text-sm text-gray-300">{text}</p>
+  </motion.div>
 );
 
 // Composant pour la barre de niveau de compétence
 const SkillItem = ({ name, level }) => {
-  const dots = Array(5).fill(0).map((_, i) => (
-    <span 
-      key={i} 
-      className={`inline-block w-2 h-2 rounded-full mx-0.5 ${i < level ? 'bg-blue-600' : 'bg-gray-300'}`}
-    ></span>
-  ));
-
   return (
-    <div className="flex justify-between items-center mb-2">
-      <p className="text-sm font-medium">{name}</p>
-      <div className="flex">{dots}</div>
-    </div>
+    <motion.div 
+      className="mb-4"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="flex justify-between items-center mb-2">
+        <p className="text-sm font-medium text-white">{name}</p>
+        <span className="text-xs text-primary-400 font-semibold">{level}%</span>
+      </div>
+      <div className="w-full bg-gray-700 rounded-full h-2">
+        <motion.div 
+          className="bg-gradient-to-r from-primary-400 to-purple-500 h-2 rounded-full"
+          initial={{ width: 0 }}
+          animate={{ width: `${level}%` }}
+          transition={{ duration: 1, delay: 0.2 }}
+        ></motion.div>
+      </div>
+    </motion.div>
   );
 };
 
-// Composant pour le titre de section à droite
+// Composant pour le titre de section
 const SectionTitle = ({ text }) => (
-  <h2 className="bg-blue-600 text-white text-lg font-bold p-2 mb-4 uppercase rounded-md inline-block">
-    {text}
-  </h2>
+  <motion.h2 
+    className="relative text-xl font-bold mb-6 text-white"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+  >
+    <span className="relative z-10">{text}</span>
+    <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-gradient-to-r from-primary-400 to-purple-500"></div>
+  </motion.h2>
 );
 
-// Composant pour un élément de la chronologie (Éducation/Expérience)
+// Composant pour un élément de la chronologie
 const TimelineItem = ({ years, title, description, isLast = false }) => (
-  <div className={`flex relative ${!isLast ? 'pb-8' : ''}`}>
-    
-    {/* Ligne verticale de la chronologie */}
+  <motion.div 
+    className={`flex relative ${!isLast ? 'pb-8' : ''}`}
+    initial={{ opacity: 0, x: -30 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6 }}
+    whileHover={{ scale: 1.02 }}
+  >
+    {/* Ligne verticale */}
     {!isLast && (
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="h-full w-0.5 bg-blue-300 ml-5"></div>
+        <div className="h-full w-0.5 bg-gradient-to-b from-primary-400 to-purple-500 ml-5 opacity-50"></div>
       </div>
     )}
 
-    {/* Cercle et contenu */}
+    {/* Cercle */}
     <div className="flex-shrink-0 relative">
-      <div className="w-3 h-3 bg-blue-600 rounded-full mt-1.5 border-2 border-white relative z-10"></div>
+      <div className="w-4 h-4 bg-gradient-to-r from-primary-400 to-purple-500 rounded-full mt-1.5 border-2 border-dark-bg relative z-10 shadow-glow"></div>
     </div>
     
-    <div className="ml-6 flex-grow">
-      <div className="text-sm font-semibold text-blue-600 mb-1">{years}</div>
-      <h4 className="text-base font-bold text-gray-800">{title}</h4>
-      <p className="text-sm text-gray-600 leading-snug">{description}</p>
+    <div className="ml-6 flex-grow p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300">
+      <div className="text-sm font-semibold text-primary-400 mb-2">{years}</div>
+      <h4 className="text-base font-bold text-white mb-2">{title}</h4>
+      <p className="text-sm text-gray-300 leading-relaxed">{description}</p>
     </div>
-  </div>
+  </motion.div>
 );
 
 
@@ -98,7 +122,7 @@ const CV = () => {
       }
       
       // 3. Télécharger le fichier
-      pdf.save('CV_Harry_Nelson.pdf');
+      pdf.save(`CV_${data.info.name.replace(' ', '_')}.pdf`);
     });
   };
 
@@ -111,122 +135,239 @@ const CV = () => {
 
 
   return (
-    <div className="bg-gray-100 min-h-screen p-8">
+    <div className="bg-dark-bg min-h-screen p-8">
       
-      {/* --- Boutons d'action (Imprimer / Télécharger) --- */}
-      {/* La classe 'print-hidden' sera ciblée par le CSS pour masquer les boutons à l'impression */}
-      <div className="max-w-4xl mx-auto mb-6 flex justify-end space-x-4 print-hidden">
-        <button
+      {/* Boutons d'action */}
+      <motion.div 
+        className="max-w-6xl mx-auto mb-8 flex justify-end space-x-4 print-hidden"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.button
           onClick={handlePrint}
-          className="flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 shadow-md"
+          className="btn-secondary flex items-center gap-2"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          {/* Icône d'impression (SVG) */}
-          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m0 0l-1.5 3.5h13l-1.5-3.5m-10 0V9a2 2 0 012-2h6a2 2 0 012 2v8m-6 0h6m-3-1v-4"></path></svg>
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m0 0l-1.5 3.5h13l-1.5-3.5m-10 0V9a2 2 0 012-2h6a2 2 0 012 2v8m-6 0h6m-3-1v-4"></path>
+          </svg>
           Imprimer
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           onClick={handleDownloadPDF}
-          className="flex items-center bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300 shadow-md"
+          className="btn-primary flex items-center gap-2"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          {/* Icône de téléchargement (SVG) */}
-          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+          </svg>
           Télécharger PDF
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
 
-      {/* --- Contenu du CV (Ref pour PDF) --- */}
-      <div 
+      {/* Contenu du CV */}
+      <motion.div 
         ref={cvRef} 
-        className="max-w-4xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden"
+        className="max-w-6xl mx-auto bg-dark-card backdrop-blur-sm border border-white/10 shadow-2xl rounded-2xl overflow-hidden"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
       >
         
-        {/* En-tête (approximation de la vague) */}
-        <header className="bg-blue-800 p-6">{/* Espace réservé pour la vague de design */}</header>
-
-        {/* Corps principal : deux colonnes */}
-        <div className="grid grid-cols-1 md:grid-cols-3">
-          
-          {/* Colonne de gauche : Contact, Skills, Hobbies */}
-          <div className="md:col-span-1 bg-blue-50 p-6 relative">
-            
-            {/* Vague de design en haut à gauche (approximation visuelle Tailwind) */}
-            <div className="absolute top-0 left-0 w-full h-1/4 bg-blue-600 transform -skew-y-3 origin-top-left -translate-y-1/2 md:hidden"></div>
-
-            {/* Photo de profil */}
-            <div className="flex justify-center mb-6 mt-4 md:mt-0">
-              <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg z-10">
-                {/* REMPLACEZ CECI PAR LE CHEMIN DE VOTRE PROPRE IMAGE */}
-                <img src="/path/to/your/profile.jpg" alt="Profile" className="w-full h-full object-cover" />
-              </div>
-            </div>
-
-            {/* Informations de contact */}
-            <section className="mb-8 pt-4">
-              <h3 className="text-xl font-semibold mb-3 border-b pb-1 text-blue-800 uppercase">CONTACT</h3>
-              <ContactItem icon="📧" text="helpshared@gmail.com" />
-              <ContactItem icon="📞" text="+0112 3456 7890" />
-              <ContactItem icon="📍" text="Longstret 123 Privince, Country 01234" />
-              <ContactItem icon="🌐" text="WWW.HELPSHARED.COM" />
-            </section>
-
-            {/* Compétences (Skills) */}
-            <section className="mb-8">
-              <h3 className="text-xl font-semibold mb-3 border-b pb-1 text-blue-800 uppercase">SKILLS</h3>
-              <SkillItem name="Web design" level={5} />
-              <SkillItem name="Graphic design" level={4} />
-              <SkillItem name="Ui design" level={5} />
-              <SkillItem name="Drawing" level={3} />
-              <SkillItem name="Animation" level={4} />
-            </section>
-
-            {/* Loisirs (Hobbies) */}
-            <section>
-              <h3 className="text-xl font-semibold mb-3 border-b pb-1 text-blue-800 uppercase">HOBBIES</h3>
-              <p className="text-sm">Football, Writing, Music, Travel</p>
-            </section>
-
+        {/* En-tête avec gradient */}
+        <header className="bg-gradient-to-r from-primary-600 via-purple-600 to-primary-600 p-8 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-400/20 to-purple-500/20 animate-pulse"></div>
+          <div className="relative z-10">
+            <motion.h1 
+              className="text-4xl md:text-5xl font-bold text-white mb-2"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {data.info.name}
+            </motion.h1>
+            <motion.p 
+              className="text-xl text-white/90 font-medium"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              Développeur Full-Stack
+            </motion.p>
           </div>
+        </header>
 
-          {/* Colonne de droite : Bio, Éducation et Expérience */}
-          <div className="md:col-span-2 p-8">
-
-            {/* Titre et Profession */}
-            <div className="mb-6">
-              <h1 className="text-4xl font-bold text-gray-800 uppercase">HARRY NELSON</h1>
-              <p className="text-xl text-blue-600 font-medium">GRAPHIC DESIGNER</p>
+        {/* Corps principal */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8">
+          
+          {/* Colonne de gauche */}
+          <motion.div 
+            className="lg:col-span-1 space-y-8"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            
+            {/* Photo de profil */}
+            <div className="flex justify-center">
+              <motion.div 
+                className="relative"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img 
+                  src={data.info.profile}
+                  alt="Profile" 
+                  className="w-40 h-40 rounded-2xl object-cover border-4 border-primary-400/50 shadow-glow" 
+                />
+                <div className="absolute inset-0 rounded-2xl ring-4 ring-primary-400/30 ring-offset-4 ring-offset-transparent animate-pulse-slow"></div>
+              </motion.div>
             </div>
 
-            {/* À propos de moi (About Me) */}
-            <section className="mb-8">
-              <SectionTitle text="ABOUT ME" />
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
+            {/* Contact */}
+            <section>
+              <SectionTitle text="CONTACT" />
+              <ContactItem icon="📧" text={data.info.email} />
+              <ContactItem icon="📞" text={data.info.phone} />
+              <ContactItem icon="📍" text={data.info.address} />
+              <ContactItem icon="🌐" text={data.info.website} />
             </section>
 
-            {/* Éducation */}
-            <section className="mb-8">
-              <SectionTitle text="EDUCATION" />
-              <TimelineItem years="2009 - 2012" title="FIRST UNIVERCITY" description="Lorem ipsum dolor sit amet, elit, sed do ut labore amet, sed tempor ut labore dolore." />
-              <TimelineItem years="2012 - 2015" title="SECOND UNIVERCITY" description="Lorem ipsum dolor sit amet, elit, sed labore tempor ut labore dolore magna aliqua." />
-              <TimelineItem years="2015 - 2017" title="THIRD UNIVERCITY" description="Lorem ipsum dolor sit amet, elit, sed tempor ut labore dolore magna." />
+            {/* Compétences */}
+            <section>
+              <SectionTitle text="COMPÉTENCES" />
+              <SkillItem name="React/React Native" level={95} />
+              <SkillItem name="Node.js" level={90} />
+              <SkillItem name="JavaScript/TypeScript" level={92} />
+              <SkillItem name="MongoDB" level={85} />
+              <SkillItem name="UI/UX Design" level={80} />
+            </section>
+
+            {/* Langues */}
+            <section>
+              <SectionTitle text="LANGUES" />
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-white font-medium">Français</span>
+                  <span className="text-primary-400">Natif</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-white font-medium">Anglais</span>
+                  <span className="text-primary-400">Courant</span>
+                </div>
+              </div>
+            </section>
+
+          </motion.div>
+
+          {/* Colonne de droite */}
+          <motion.div 
+            className="lg:col-span-2 space-y-8"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+
+            {/* À propos */}
+            <section>
+              <SectionTitle text="À PROPOS" />
+              <motion.p 
+                className="text-gray-300 leading-relaxed text-justify"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+              >
+                {data.info.bio}
+              </motion.p>
+            </section>
+
+            {/* Formation */}
+            <section>
+              <SectionTitle text="FORMATION" />
+              <div className="space-y-6">
+                {data.education?.map((edu, index) => (
+                  <TimelineItem 
+                    key={index}
+                    years={edu.period}
+                    title={edu.degree}
+                    description={edu.institution}
+                    isLast={index === data.education.length - 1}
+                  />
+                )) || (
+                  <TimelineItem 
+                    years="2020 - 2024"
+                    title="Formation en Développement Web"
+                    description="Autodidacte - Spécialisation Full-Stack JavaScript"
+                    isLast={true}
+                  />
+                )}
+              </div>
             </section>
 
             {/* Expérience */}
             <section>
-              <SectionTitle text="EXPERIENCE" />
-              <TimelineItem years="2017 - 2019" title="FIRST COMPANY" description="Lorem ipsum dolor sit amet, elit, sed do ut labore et ipsum dolor sit amet, elit, tempor ut labore dolore magna aliqua." />
-              <TimelineItem years="2019 - 2021" title="SECOND COMPANY" description="Lorem ipsum dolor sit amet, elit, sed do tempor ut labore dolore magna." isLast={true} />
+              <SectionTitle text="EXPÉRIENCE" />
+              <div className="space-y-6">
+                {data.experience?.map((exp, index) => (
+                  <TimelineItem 
+                    key={index}
+                    years={exp.period}
+                    title={exp.position}
+                    description={`${exp.company} - ${exp.description}`}
+                    isLast={index === data.experience.length - 1}
+                  />
+                )) || (
+                  <TimelineItem 
+                    years="2022 - Présent"
+                    title="Développeur Full-Stack Freelance"
+                    description="Développement d'applications web et mobiles avec React, Node.js et React Native"
+                    isLast={true}
+                  />
+                )}
+              </div>
             </section>
 
-          </div>
+            {/* Projets récents */}
+            <section>
+              <SectionTitle text="PROJETS RÉCENTS" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {data.projects?.slice(0, 4).map((project, index) => (
+                  <motion.div 
+                    key={index}
+                    className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <h4 className="font-semibold text-white mb-2">{project.title}</h4>
+                    <p className="text-sm text-gray-300 mb-3">{project.description}</p>
+                    <div className="flex flex-wrap gap-1">
+                      {project.technologies?.slice(0, 3).map((tech, i) => (
+                        <span key={i} className="px-2 py-1 bg-primary-400/20 text-primary-300 text-xs rounded">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                )) || (
+                  <div className="col-span-2 text-center text-gray-400">
+                    <p>Projets en cours de développement...</p>
+                  </div>
+                )}
+              </div>
+            </section>
+
+          </motion.div>
         </div>
 
-        {/* Pied de page (Footer) */}
-        <footer className="bg-blue-800 text-white p-3 text-center text-xs">
-          WWW.HELPSHARED.COM
+        {/* Footer */}
+        <footer className="bg-gradient-to-r from-primary-600/20 to-purple-600/20 backdrop-blur-sm border-t border-white/10 p-6 text-center">
+          <p className="text-gray-300 text-sm">
+            © 2024 {data.info.name} - Développeur Full-Stack
+          </p>
         </footer>
-      </div>
+      </motion.div>
     </div>
   );
 };

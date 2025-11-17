@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import CarouselActifAuto from "./components/CarouselActifAuto";
 import Formation from "./components/Formation";
 import Aproposdemoi from "./components/Aproposdemoi";
-import Mesprojet from "./components/Mesprojet";
+import CV from "./components/MonCV";
 
 function App() {
   return (
