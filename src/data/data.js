@@ -3,7 +3,7 @@ const data = {
     { titre: "HTML/CSS", annee: "2 ans", logo: "/htmlcss.jpg",niveau:"intermediaire" },
     { titre: "JavaScript", annee: "2 ans", logo: "/javascript.jpg" ,niveau:"intermediaire"},
     { titre: "TypeScript", annee: "1 an", logo: "/typescript.jpg" ,niveau:"debutant"},
-    { titre: "ReactJS", annee: "2 ans", logo: "/reactjs.jpg" ,niveau:"intermediaire"},
+    { titre: "ReactJS", annee: "2 ans", logo: "/reactjs.jpg" ,niveau:"intermdebutantediaire"},
     { titre: "React Native", annee: "2 ans", logo: "/reactNative.jpg" ,niveau:"debutant"},
     { titre: "NodeJS", annee: "2 ans", logo: "/nodejs.jpg", nbreProjet: 2 ,niveau:"intermediaire"},
     { titre: "Supabase", annee: "1 an", logo: "/supabase.jpg", nbreProjet: 1 ,niveau:"debutant"},
@@ -26,6 +26,13 @@ const data = {
       organisateur:"Université de Labé (mentionnée sur le certificat) et CJP (Club des Jeunes Informaticiens)",
       description:"Formation intitulée : Comment protéger son Réseaux LAN avec un pare-feu",
       certificat:"/certificat/cjp1.jpg"
+     },
+      {
+      date:"Date d'obtention : 21 NOV. 2025",
+      titre:"CERTIFICATION JAVASCRIPT",
+      organisateur:"CodinGame Filiale de : CoderPad Signé par : Frédéric Desmoulins, CEO de CodinGame",
+      description:"Ce document atteste que Fode Momo Soumah a validé ses compétences en résolution de problèmes avec JavaScript. Il s'agit d'une certification délivrée par CodinGame.",
+      certificat:"/certificat/codingame.png"
      },
    ],
   info: {
