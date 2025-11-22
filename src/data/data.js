@@ -34,6 +34,13 @@ const data = {
       description:"Ce document atteste que Fode Momo Soumah a validé ses compétences en résolution de problèmes avec JavaScript. Il s'agit d'une certification délivrée par CodinGame.",
       certificat:"/certificat/codingame.png"
      },
+      {
+      date:"Date d'obtention : 22 NOV. 2025",
+      titre:"CERTIFICATION PYTHON 3",
+      organisateur:"CodinGame Filiale de : CoderPad Signé par : Frédéric Desmoulins, CEO de CodinGame",
+      description:"Ce document atteste que Fode Momo Soumah a validé ses compétences en résolution de problèmes avec python 3. Il s'agit d'une certification délivrée par CodinGame.",
+      certificat:"/certificat/python.png"
+     },
    ],
   info: {
     nom: "Soumah",
