@@ -28,6 +28,13 @@ const data = {
       description:"Formation intitulée : Comment protéger son Réseaux LAN avec un pare-feu",
       certificat:"/certificat/cjp1.jpg"
      },
+     {
+        date: "S'est déroulée du 1 juin au 24 septembre 2025",
+        titre: "Certificat de formation en Développement Web Full-Stack",
+        organisateur: "SIMPLON Guinée",
+        description: "Formation complète sur le développement web moderne utilisant React pour le front-end, Node.js/Express pour le back-end, et MongoDB pour la gestion de bases de données NoSQL. Programme axé sur la création d’applications web, la conception d’API REST, l’authentification, la gestion d’état, le travail collaboratif (Git/GitHub) et la réalisation de projets professionnels.",
+        certificat: "/certificat/simplon_fullstack.jpg"
+     },
       {
       date:"Date d'obtention : 21 NOV. 2025",
       titre:"CERTIFICATION JAVASCRIPT",
