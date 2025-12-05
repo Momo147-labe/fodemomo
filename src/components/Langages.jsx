@@ -72,7 +72,7 @@ const Langages = () => {
                   </h3>
 
                   <div className="flex justify-between text-sm text-gray-400 mb-4">
-                    <span>{lang.annee} ans</span>
+                    <span>{lang.annee}</span>
                     <span>{lang.nbreProjet} projets</span>
                   </div>
 

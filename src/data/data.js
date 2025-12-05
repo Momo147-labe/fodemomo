@@ -11,6 +11,7 @@ const data = {
     { titre: "MySQL", annee: "1 an", logo: "/mysql.jpg", nbreProjet: 3 ,niveau:"intermediaire"},
     { titre: "SQLite", annee: "1 an", logo: "/sqlite.jpg", nbreProjet: 2 ,niveau:"debutant"},
     { titre: "Langage C", annee: "1 an", logo: "/langageC.jpg", nbreProjet: 2 ,niveau:"debutant"},
+    { titre: "Flutter & Dart", annee: "1 mois", logo: "/lan", nbreProjet: 0 ,niveau:"debutant"},
   ],
   formation:[
      {
@@ -40,6 +41,14 @@ const data = {
       organisateur:"CodinGame Filiale de : CoderPad Signé par : Frédéric Desmoulins, CEO de CodinGame",
       description:"Ce document atteste que Fode Momo Soumah a validé ses compétences en résolution de problèmes avec python 3. Il s'agit d'une certification délivrée par CodinGame.",
       certificat:"/certificat/python.png"
+     },
+     ,
+      {
+      date:"Date de 1 au 5 decembre",
+      titre:"Certificat de formation",
+      organisateur:"Universiter de Labé",
+      description:"Formation en développement Flutter : Acquisition des compétences nécessaires pour développer des applications mobile  multiplateformes avec Flutter et Dart : conception d’interfaces responsives, navigation (Stack, Tab, Drawer), gestion d’état (Provider/SetState), intégration d’API REST, manipulation du stockage local (SharedPreferences / SQLite), gestion des médias (caméra, fichiers), et préparation des builds Android. Travail sur plusieurs mini-projets pour maîtriser le cycle complet d’une application mobile.",
+      certificat:"/certificat/pythosn.png"
      },
    ],
   info: {
