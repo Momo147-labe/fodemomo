@@ -33,7 +33,7 @@ const data = {
         titre: "Certificat de formation en Développement Web Full-Stack",
         organisateur: "SIMPLON Guinée",
         description: "Formation complète sur le développement web moderne utilisant React pour le front-end, Node.js/Express pour le back-end, et MongoDB pour la gestion de bases de données NoSQL. Programme axé sur la création d’applications web, la conception d’API REST, l’authentification, la gestion d’état, le travail collaboratif (Git/GitHub) et la réalisation de projets professionnels.",
-        certificat: "/certificat/simplon_fullstack.jpg"
+        certificat: "/certificat/attend.png"
      },
       {
       date:"Date d'obtention : 21 NOV. 2025",
@@ -55,7 +55,7 @@ const data = {
       titre:"Certificat de formation",
       organisateur:"Universiter de Labé",
       description:"Formation en développement Flutter : Acquisition des compétences nécessaires pour développer des applications mobile  multiplateformes avec Flutter et Dart : conception d’interfaces responsives, navigation (Stack, Tab, Drawer), gestion d’état (Provider/SetState), intégration d’API REST, manipulation du stockage local (SharedPreferences / SQLite), gestion des médias (caméra, fichiers), et préparation des builds Android. Travail sur plusieurs mini-projets pour maîtriser le cycle complet d’une application mobile.",
-      certificat:"/certificat/pythosn.png"
+      certificat:"/certificat/attend.png"
      },
    ],
   info: {
