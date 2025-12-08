@@ -9,7 +9,7 @@ const CarouselActifAuto = () => {
   const isHovering = useRef(false);
 
   const nextSlide = () => {
-    setCurrent((prev) => (prev + 1) % projetsActifs.length);
+      setCurrent((prev) => (prev + 1) % projetsActifs.length);
   };
 
   const prevSlide = () => {

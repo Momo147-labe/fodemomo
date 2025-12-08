@@ -4,14 +4,14 @@ const data = {
     { titre: "JavaScript", annee: "2 ans", logo: "/javascript.jpg" ,niveau:"intermediaire"},
     { titre: "TypeScript", annee: "1 an", logo: "/typescript.jpg" ,niveau:"debutant"},
     { titre: "ReactJS", annee: "2 ans", logo: "/reactjs.jpg" ,niveau:"intermdebutantediaire"},
-    { titre: "React Native", annee: "2 ans", logo: "/reactNative.jpg" ,niveau:"debutant"},
+    { titre: "Flutter & Dart", annee: "1 mois", logo: "/flutter.jpeg", nbreProjet: 0 ,niveau:"debutant"},
     { titre: "NodeJS", annee: "2 ans", logo: "/nodejs.jpg", nbreProjet: 2 ,niveau:"intermediaire"},
+    { titre: "React Native", annee: "2 ans", logo: "/reactNative.jpg" ,niveau:"debutant"},
     { titre: "Supabase", annee: "1 an", logo: "/supabase.jpg", nbreProjet: 1 ,niveau:"debutant"},
     { titre: "MongoDB", annee: "2 ans", logo: "/mongodb.jpg", nbreProjet: 3 ,niveau:"intermediaire"},
     { titre: "MySQL", annee: "1 an", logo: "/mysql.jpg", nbreProjet: 3 ,niveau:"intermediaire"},
     { titre: "SQLite", annee: "1 an", logo: "/sqlite.jpg", nbreProjet: 2 ,niveau:"debutant"},
     { titre: "Langage C", annee: "1 an", logo: "/langageC.jpg", nbreProjet: 2 ,niveau:"debutant"},
-    { titre: "Flutter & Dart", annee: "1 mois", logo: "/lan", nbreProjet: 0 ,niveau:"debutant"},
   ],
   formation:[
      {
@@ -69,7 +69,9 @@ const data = {
   },
   projets: [
     {
-      titre: "Gestion de l'école",
+      titre: "EliteSchool",
+      description: "Application web complète de gestion scolaire permettant la gestion des élèves, professeurs, classes, notes et emplois du temps.",
+      image: "/eliteschool.png",
       langage: {
         frontend: ["ReactJS", "TailwindCSS"],
         backend: ["NodeJS", "Express"],
@@ -77,10 +79,13 @@ const data = {
       },
       lien: "https://eliteschool.onrender.com/",
       equipe: "Seul",
-      isActive: true,
+      statut: "en_cours",
+      progression: 50,
     },
     {
       titre: "ClassMate",
+      description: "Application mobile de gestion de classe développée avec React Native, permettant aux enseignants de gérer leurs cours et étudiants.",
+      image: "/projects/classmate.png",
       langage: {
         frontend: "React Native",
         backend: ["NodeJS", "Express"],
@@ -88,8 +93,9 @@ const data = {
       },
       lien: "https://classmate.onrender.com/",
       equipe: "Seul",
-      isActive: true,
-    },
+      statut: "terminé",
+      progression: 100,
+    }
   ],
 };
 
