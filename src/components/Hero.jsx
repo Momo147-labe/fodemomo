@@ -27,31 +27,26 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen mt-2 bg-hero-gradient overflow-hidden">
-      {/* Particules animées */}
-      <div className="particle p1"></div>
-      <div className="particle p2"></div>
-      <div className="particle p3"></div>
-      <div className="particle p4"></div>
-      
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-dark-bg/20 to-dark-bg"></div>
-      
-      <div className="relative container-custom section-padding">
-        <motion.div 
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background with custom gradient overlay */}
+      <div className="absolute inset-0 bg-hero-gradient"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-dark-bg/40 to-dark-bg"></div>
+
+      <div className="relative container-custom px-6 z-10">
+        <motion.div
           className="flex flex-col items-center justify-center min-h-screen text-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Photo de profil avec effet glassmorphism */}
-          <motion.div 
-            className="relative mb-8"
+          <motion.div
+            className="relative mb-4 mt-24"
             variants={itemVariants}
           >
             <div className="relative">
-              <img 
-                className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white/20 shadow-glow" 
+              <img
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white/20 shadow-glow"
                 src={data.info.profile}
                 alt="Fodé Momo Soumah - Full Stack Developer"
               />
@@ -61,30 +56,31 @@ const Hero = () => {
           </motion.div>
 
           {/* Titre principal */}
-          <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
-            variants={itemVariants}
-          >
-            <span className="block text-white mb-2">Salut, je suis</span>
-            <span className="text-gradient">Fodé Momo Soumah</span>
-          </motion.h1>
+          <motion.div variants={itemVariants} className="mb-6">
+            <span className="text-primary-400 font-semibold tracking-widest uppercase text-xs sm:text-sm mb-4 block">Développeur Full-Stack</span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight tracking-tight">
+              <span className="text-white">Fodé Momo</span>
+              <br />
+              <span className="text-gradient">Soumah</span>
+            </h1>
+          </motion.div>
 
           {/* Sous-titre */}
-          <motion.p 
-            className="text-lg md:text-xl text-dark-text-secondary max-w-3xl mx-auto mb-8 leading-relaxed"
+          <motion.p
+            className="text-lg md:text-xl text-dark-text-secondary max-w-2xl mx-auto mb-10 leading-relaxed font-inter"
             variants={itemVariants}
           >
-            <span className="font-semibold text-primary-400">Développeur Full-Stack</span> passionné par la création d'expériences numériques exceptionnelles avec 
-            <span className="text-white font-medium"> React, React Native & Node.js</span>
+            Je conçois et développe des <span className="text-white font-medium">solutions numériques innovantes</span> et performantes, en alliant design élégant et technologies de pointe comme
+            <span className="text-primary-400 font-semibold"> React & Node.js</span>.
           </motion.p>
 
           {/* Badges de compétences */}
-          <motion.div 
+          <motion.div
             className="flex flex-wrap justify-center gap-3 mb-10"
             variants={itemVariants}
           >
             {['React', 'Node.js', 'React Native', 'MongoDB'].map((tech) => (
-              <span 
+              <span
                 key={tech}
                 className="px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm font-medium text-primary-300 hover:bg-white/10 transition-all duration-300"
               >
@@ -94,7 +90,7 @@ const Hero = () => {
           </motion.div>
 
           {/* Boutons d'action */}
-          <motion.div 
+          <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
             variants={itemVariants}
           >
@@ -102,29 +98,23 @@ const Hero = () => {
               to="projects"
               smooth
               duration={500}
-              className="btn-primary cursor-pointer inline-flex items-center gap-2"
+              className="btn-primary cursor-pointer px-8 py-4 text-base shadow-glow hover:shadow-glow-lg transition-all"
             >
-              <span>Voir mes projets</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <span>Découvrir mes projets</span>
             </Link>
-            
+
             <Link
               to="contact"
               smooth
               duration={500}
-              className="btn-secondary cursor-pointer inline-flex items-center gap-2"
+              className="btn-secondary cursor-pointer px-8 py-4 text-base backdrop-blur-sm transition-all"
             >
               <span>Me contacter</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
             </Link>
           </motion.div>
 
           {/* Indicateur de scroll */}
-          <motion.div 
+          <motion.div
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
             variants={itemVariants}
           >

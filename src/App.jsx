@@ -7,11 +7,12 @@ import Footer from "./components/Footer";
 import CarouselActifAuto from "./components/CarouselActifAuto";
 import Formation from "./components/Formation";
 import Aproposdemoi from "./components/Aproposdemoi";
-import CV from "./components/MonCV";
+import ParticlesBackground from "./components/ParticlesBackground";
 
 function App() {
   return (
-    <div className="min-h-screen bg-dark-bg text-dark-text overflow-x-hidden">
+    <div className="min-h-screen bg-dark-bg text-dark-text overflow-x-hidden relative">
+      <ParticlesBackground />
       <Navbar />
       <Hero />
       <Aproposdemoi />
@@ -21,7 +22,7 @@ function App() {
       <Formation />
       <Contact />
       <Footer />
-     
+
     </div>
   );
 }
